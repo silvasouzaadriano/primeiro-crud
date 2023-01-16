@@ -8,7 +8,7 @@ app.use(express.json());
 const users = []
 
 app.get('/users', (request, response) => {
-  response.json({'teste': 'Esse é um teste!'})
+  response.json(users)
 })
 
 app.post('/users', (request, response) => {
