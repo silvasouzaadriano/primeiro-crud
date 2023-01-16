@@ -23,6 +23,22 @@ app.post('/users', (request, response) => {
   response.json(user);
 })
 
+app.put('/users/:id', (request, response) => {
+  const userId = Number(request.params.id);
+  const userName = request.body.name;
+  let message = 'success';
+
+  const userIndexId = users.findIndex(user => user.id === userId)
+
+  if (userIndexId > -1) {
+    users[userIndexId].name = userName
+  } else {
+    message = 'failed'
+  }
+
+  response.json({ message })
+})
+
 app.delete('/users/:id', (request, response) => {
   const userId = Number(request.params.id)
   const userIndexId = users.findIndex(user => user.id === userId)
