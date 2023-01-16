@@ -23,6 +23,17 @@ app.post('/users', (request, response) => {
   response.json(user);
 })
 
+app.delete('/users/:id', (request, response) => {
+  const userId = Number(request.params.id)
+  const userIndexId = users.findIndex(user => user.id === userId)
+
+  if (userIndexId > -1) {
+    users.splice(userIndexId, 1)
+  }
+
+  response.json({message: 'success'})
+})
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`)
